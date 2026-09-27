@@ -82,7 +82,21 @@ CU_20926 Bats, Cats and Witches Hats Fabric Wall Hanging; CU_20026 Cute and Cree
 **CLEAN — 93** (~20 cats → The Cattery, ~73 others → The Menagerie: bats, owls, foxes, fawns, dogs, doorstops). Final set = (her resent file's surviving rows) ∩ (clean + her YES picks + the 2 renamed profanity items), minus unsellable.
 
 ### 2026-09-27 — repo move
-Project moved from lpop24/g01tawjsf (unrelated Java repo, abandoned) to onyxceo/moonpetal (this repo). Nothing was ever committed to the old repo.
+Project moved from lpop24/g01tawjsf (unrelated Java repo, abandoned) to onyxceo/moonpetal (this repo). Nothing was ever committed to the old repo. Loubna deletes the old repo herself (no API for repo deletion).
+
+### 2026-09-27 — SDW order #3065 import + full stock/price sync (StockLevelsEU-3.csv)
+Loubna's physical-shop order (65 lines, 13 Sep 2026, parsed from Safari webarchive → `data/order_3065_items.json`):
+- **31 Satya-brand items excluded** on her instruction (all incense "by Satya").
+- **33 products created** (of 34 non-Satya: LI_32127 already existed) — full house treatment: Moonpetal names, copy, SEO, image from SDW xlarge, cost, stock, DENY, ACTIVE, NOT published to any channel. Source data: `data/new_products.json` + `data/to_add.json`. New productTypes introduced: **Incense**, **Gift Bags**, **Candle Holders** (add to browse-category collections later). New set tags: Hollow Library, Black Rose, Yin & Yang, Frightful Folk.
+- WI_40627 (Magic Toad cone holder) created at qty 0 — zero stock in feed, page kept for notify-me.
+- **NEW PRICING RULE from Loubna (supersedes EU-RRP formula): retail = EU feed cost × 3 × 1.17 (LU VAT), rounded up to next €.99.** Store has taxesIncluded=true; per-country EU VAT display relies on Shopify's "include/exclude tax based on customer country" setting (verify in Settings → Taxes before launch).
+- **All 48 existing products repriced** to the same rule from fresh feed costs (47 price changes; full before/after in `data/reprice_plan.json` for rollback). 10 stale unit costs refreshed (biggest: book mugs BC_352/3/4 26 6.63→9.28).
+- **Inventory synced to StockLevelsEU-3** (30 corrections). Newly out of stock: LI_57827 (Hollow Library Wax Warmer), LI_33227 (Coffin Bookmark). Back in stock: PA_78327, PA_78427. Near-zero: LI_58927 (5), SE_42427 (45), LI_32927 (50).
+- **HA_18026 (Shelf of Shadows Advent Calendar) is GONE from the EU feed** — cannot be reordered; qty set to 0, kept at stored cost. Flag to Loubna before publish.
+- Split bookmarks SET_37426-*: parent feed stock 131 displays × 9 per design = 1179 each; unit cost 35.19/36 = 0.98.
+- Content screen: no BLOCKED terms in the order's product names. Witch/magic-adjacent items (Magic Toad, Witching Hour) included — Loubna ordered them herself for the physical shop, which counts as her decision.
+- Store total now: **81 ACTIVE products, 0 published to Online Store** (verified).
+- Note: `moon-petal-11` in Loubna's admin URL = this same store (myshopifyDomain 7q0h34-1x.myshopify.com, moonpetal.eu); confirmed by catalog + "Moonpetal Redesign (WIP)" theme. Never call switch-shop from a non-interactive session (revokes the token).
 
 ## Outstanding work, in order
 1. **Blocked on Loubna**: corrected `critter_selection.xlsx` (with her row deletions) + `witch_magick_picks.xlsx` (YES/NO). Then: re-screen, intersect with her deletions, price from EU feed, name (incl. the two profanity renames), write copy, create products unpublished, build The Cattery + The Menagerie smart collections. Report exact counts.
